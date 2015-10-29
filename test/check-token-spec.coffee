@@ -60,7 +60,7 @@ describe 'CheckToken', ->
 
         @sut.do request, (error, @response) => done error
 
-      it 'should respond with a 204', ->
+      it 'should respond with a 403', ->
         expectedResponse =
           metadata:
             responseId: 'axed'
