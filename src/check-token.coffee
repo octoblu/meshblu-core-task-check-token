@@ -3,10 +3,8 @@ http = require 'http'
 
 class CheckToken
   constructor: (options={}) ->
-    {@datastore,pepper} = options
-    @tokenManager = new TokenManager
-      datastore: @datastore
-      pepper: pepper
+    {@datastore,pepper,uuidAliasResolver} = options
+    @tokenManager = new TokenManager {@datastore, pepper, uuidAliasResolver}
 
   do: (request, callback) =>
     {uuid,token} = request.metadata.auth
