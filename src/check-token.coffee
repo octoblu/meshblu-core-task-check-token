@@ -8,7 +8,7 @@ class CheckToken
 
   do: (request, callback) =>
     {uuid,token} = request.metadata.auth
-    @tokenManager.verifyToken uuid: uuid, token: token, (error, verified) =>
+    @tokenManager.verifyToken {uuid, token}, (error, verified) =>
       return callback error if error?
 
       code = 403

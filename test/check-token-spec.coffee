@@ -3,6 +3,7 @@ CheckToken = require '../src/check-token'
 
 describe 'CheckToken', ->
   beforeEach (done) ->
+    @uuidAliasResolver = resolve: (uuid, callback) => callback null, uuid
     @datastore = new Datastore
       database: 'meshblu-core-task-check-token'
       collection: 'devices'
@@ -10,7 +11,10 @@ describe 'CheckToken', ->
     @datastore.remove done
 
   beforeEach ->
-    @sut = new CheckToken datastore: @datastore, pepper: 'totally-a-secret'
+    @sut = new CheckToken
+      datastore: @datastore
+      pepper: 'totally-a-secret'
+      uuidAliasResolver: @uuidAliasResolver
 
   describe '->do', ->
     context 'when given a valid token', ->
@@ -20,7 +24,7 @@ describe 'CheckToken', ->
           token: 'never-gonna-guess-me'
           meshblu:
             tokens:
-              'GpJaXFa3XlPf657YgIpc20STnKf2j+DcTA1iRP5JJcg=': {}
+              'ZOGZOX7K4XywpyNFjVS+6SfbXFux8FNW7VT6NWmsz6E=': {}
         @datastore.insert record, done
 
       beforeEach (done) ->
