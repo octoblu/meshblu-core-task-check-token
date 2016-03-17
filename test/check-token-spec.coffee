@@ -64,11 +64,11 @@ describe 'CheckToken', ->
 
         @sut.do request, (error, @response) => done error
 
-      it 'should respond with a 403', ->
+      it 'should respond with a 401', ->
         expectedResponse =
           metadata:
             responseId: 'axed'
-            code: 403
-            status: 'Forbidden'
+            code: 401
+            status: 'Unauthorized'
 
         expect(@response).to.deep.equal expectedResponse
