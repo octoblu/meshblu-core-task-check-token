@@ -1,14 +1,16 @@
-Datastore = require 'meshblu-core-datastore'
+Datastore  = require 'meshblu-core-datastore'
 CheckToken = require '../src/check-token'
+mongojs    = require 'mongojs'
 
 describe 'CheckToken', ->
   beforeEach (done) ->
     @uuidAliasResolver = resolve: (uuid, callback) => callback null, uuid
+    database = mongojs 'meshblu-core-task-check-token', ['devices']
     @datastore = new Datastore
-      database: 'meshblu-core-task-check-token'
+      database: database
       collection: 'devices'
 
-    @datastore.remove done
+    database.devices.remove done
 
   beforeEach ->
     @sut = new CheckToken
