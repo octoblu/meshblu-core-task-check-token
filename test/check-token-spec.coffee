@@ -5,12 +5,12 @@ mongojs    = require 'mongojs'
 describe 'CheckToken', ->
   beforeEach (done) ->
     @uuidAliasResolver = resolve: (uuid, callback) => callback null, uuid
-    database = mongojs 'meshblu-core-task-check-token', ['devices']
+    database = mongojs 'meshblu-core-task-check-token', ['tokens']
     @datastore = new Datastore
       database: database
-      collection: 'devices'
+      collection: 'tokens'
 
-    database.devices.remove done
+    database.tokens.remove done
 
   beforeEach ->
     @sut = new CheckToken

@@ -1,6 +1,6 @@
 {
   "name": "meshblu-core-task-check-token",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Meshblu task for checking tokens",
   "main": "index.js",
   "scripts": {
