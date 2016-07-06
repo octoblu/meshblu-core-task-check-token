@@ -23,10 +23,10 @@ describe 'CheckToken', ->
       beforeEach (done) ->
         record =
           uuid: 'thank-you-for-considering'
-          token: 'never-gonna-guess-me'
-          meshblu:
-            tokens:
-              'ZOGZOX7K4XywpyNFjVS+6SfbXFux8FNW7VT6NWmsz6E=': {}
+          hashedToken: 'ZOGZOX7K4XywpyNFjVS+6SfbXFux8FNW7VT6NWmsz6E='
+          metadata: {
+            createdAt: new Date()
+          }
         @datastore.insert record, done
 
       beforeEach (done) ->
@@ -52,8 +52,7 @@ describe 'CheckToken', ->
       beforeEach (done) ->
         record =
           uuid: 'thank-you-for-considering'
-          meshblu:
-            tokens: {}
+          hashedToken: 'this-will-not-work'
         @datastore.insert record, done
 
       beforeEach (done) ->
